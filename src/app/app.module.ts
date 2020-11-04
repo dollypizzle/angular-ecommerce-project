@@ -1,38 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ProductComponent } from './product/product.component';
-import { AddProductComponent } from './product/add-product/add-product.component';
-import { CartComponent } from './product/cart/cart.component';
-import { CheckoutComponent } from './product/checkout/checkout.component';
-import { ProductDetailComponent } from './product/product-detail/product-detail.component';
-import { ProductListComponent } from './product/product-list/product-list.component';
-import { CartCalculatorComponent } from './product/cart-calculator/cart-calculator.component';
-import { IndexComponent } from './index/index.component';
-import { FooterComponent } from './index/footer/footer.component';
-import { NavbarComponent } from './index/navbar/navbar.component';
-import { LoginComponent } from './index/login/login.component';
+import { IndexModule } from './index/index.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductComponent,
-    AddProductComponent,
-    CartComponent,
-    CheckoutComponent,
-    ProductDetailComponent,
-    ProductListComponent,
-    CartCalculatorComponent,
-    IndexComponent,
-    FooterComponent,
-    NavbarComponent,
-    LoginComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    IndexModule,
+    AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA],
 })
 export class AppModule { }
