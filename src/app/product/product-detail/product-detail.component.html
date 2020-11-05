@@ -1,1 +1,58 @@
-<p>product-detail works!</p>
+<div>
+  <div class="card">
+    <div class="row" *ngIf="currentProduct">
+      <div class="col-sm-5 border-right">
+        <article class="gallery-wrap">
+          <div class="img-big-wrap">
+            <div>
+              <a
+                ><img alt="{{ currentProduct.name }}" src="{{ currentProduct.image }}"
+              /></a>
+            </div>
+          </div>
+
+        </article>
+      </div>
+      <div class="col-sm-7">
+        <article class="p-5 card-body">
+          <h3 class="mb-3 title">Name: {{ currentProduct.name }}</h3>
+
+          <p class="price-detail-wrap">
+            <span class="price h3 text-warning">
+              <span class="currency">Price: $</span><span class="num">{{ currentProduct.price }}</span>
+            </span>
+          </p>
+          <dl class="item-property">
+            <dt>Description</dt>
+            <dd>
+              <p>
+                {{ currentProduct.description }}
+              </p>
+            </dd>
+          </dl>
+          <dl>
+            <dt>Brand</dt>
+            <dd>
+              <p>
+                {{ currentProduct.brand }}
+              </p>
+            </dd>
+          </dl>
+
+          <hr />
+          <hr />
+          <a routerLink="/products/edit/{{ currentProduct._id }}" class="mx-3 btn btn-lg btn-primary text-uppercase">
+            Edit
+          </a>
+          <a (click)="deleteProduct()" class="mx-3 btn btn-lg btn-primary text-uppercase">
+            Delete
+          </a>
+          <a class="mx-3 btn btn-lg btn-outline-primary text-uppercase">
+            <i class="fa fa-shopping-cart"></i> Add to cart
+          </a>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+

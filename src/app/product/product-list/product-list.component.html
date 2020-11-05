@@ -1,1 +1,93 @@
-<p>product-list works!</p>
+<div>
+  <div class="jumbotron jumbotron-fluid bg-dark">
+    <div class="jumbotron-background">
+      <img src="https://placeimg.com/2000/1000/nature" class="blur" />
+    </div>
+
+    <div class="container text-white">
+      <h1 class="display-4">Dolmart Phone Hub</h1>
+      <p class="lead">
+        This is a simple hero unit, a simple jumbotron-style component for
+        calling extra attention to featured content or information.
+      </p>
+      <hr class="my-4" />
+      <p>
+        It uses utility classes for typography and spacing to space content out
+        within the larger container.
+      </p>
+      <a
+        class="btn btn-dark btn-lg"
+        [routerLink]="['/products/add-product']"
+        role="button"
+        >Add New Product</a
+      >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <div id="admin-sidebar" class="p-5">
+        <div>
+          <h4 class="mb-3">
+            <strong>Categories</strong>
+          </h4>
+        </div>
+        <ul class="sidenav admin-sidenav list-unstyled">
+          <li><a>Mobile & Accessories</a></li>
+          <li><a>Automobiles & Motorcycles</a></li>
+          <li><a>Computer，Office & Security</a></li>
+          <li><a>Outdoor Fun & Sports</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="w-full">
+        <div class="row">
+          <div
+            class="col-md-3 col-sm-6"
+            *ngFor="let product of products; let i = index"
+            [class.active]="i == currentIndex"
+            (click)="setCurrentProduct(product, i)"
+          >
+            <div class="product-grid">
+              <div class="product-image">
+                <a>
+                  <img
+                    class="pic pic-1"
+                    src="{{ product.image }}"
+                    alt="{{ product.name }}"
+                  />
+                  <img
+                    class="pic pic-2"
+                    src="{{ product.image }}"
+                    alt="{{ product.name }}"
+                  />
+                </a>
+                <ul class="social">
+                  <li>
+                    <a routerLink="/products/{{ product._id }}" data-tip="Quick View"
+                      ><i class="fa fa-eye"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a data-tip="Add to Cart"
+                      ><i class="fa fa-shopping-cart"></i
+                    ></a>
+                  </li>
+                </ul>
+              </div>
+              <div class="product-content">
+                <h3 class="title">
+                  <a>{{ product.name }}</a>
+                </h3>
+                <div class="price">
+                  ${{ product.price }}
+                </div>
+                <a class="add-to-cart">ADD TO CART</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
