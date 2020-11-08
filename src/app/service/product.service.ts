@@ -20,18 +20,39 @@ export class ProductService {
   }
 
   create(data): Observable<any> {
-    return this.http.post('https://e-papi-api.herokuapp.com/products', data);
+
+    const main = localStorage.getItem('token');
+    const Token = main.replace(/['"]+/g, '');
+
+    return this.http.post('https://e-papi-api.herokuapp.com/products', data , {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${Token}`,
+      },
+    });
   }
 
-  // update(id, data): Observable<any> {
-  //   return this.http.put(`${baseUrl}/${id}`, data);
-  // }
-
   update(id, data): Observable<any> {
-    return this.http.patch(`https://e-papi-api.herokuapp.com/products/${id}`, data);
+    const main = localStorage.getItem('token');
+    const Token = main.replace(/['"]+/g, '');
+
+    return this.http.patch(`https://e-papi-api.herokuapp.com/products/${id}`, data , {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${Token}`,
+      }
+    });
   }
 
   delete(id): Observable<any> {
-    return this.http.delete(`${baseUrl}/${id}`);
+    const main = localStorage.getItem('token');
+    const Token = main.replace(/['"]+/g, '');
+
+    return this.http.delete(`${baseUrl}/${id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${Token}`,
+      }
+    });
   }
 }

@@ -10,12 +10,14 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
 import { ProductModule } from '../product/product.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     ProductModule,
     SharedModule,
+    ReactiveFormsModule,
     RouterModule.forChild(IndexRoutes),
   ],
   declarations: [

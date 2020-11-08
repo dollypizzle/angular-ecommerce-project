@@ -41,13 +41,13 @@
 
           <hr />
           <hr />
-          <a routerLink="/products/edit/{{ currentProduct._id }}" class="mx-3 btn btn-lg btn-primary text-uppercase">
+          <a *ngIf="isAuthenticated" routerLink="/products/edit/{{ currentProduct._id }}" class="mx-3 btn btn-lg btn-outline-success text-uppercase">
             Edit
           </a>
-          <a (click)="deleteProduct()" class="mx-3 btn btn-lg btn-primary text-uppercase">
+          <a *ngIf="isAuthenticated" (click)="deleteProduct()" class="mx-3 btn btn-lg btn-outline-danger text-uppercase text-danger">
             Delete
           </a>
-          <a class="mx-3 btn btn-lg btn-outline-primary text-uppercase">
+          <a class="mx-3 btn btn-lg btn-outline-primary text-uppercase text-primary">
             <i class="fa fa-shopping-cart"></i> Add to cart
           </a>
         </article>

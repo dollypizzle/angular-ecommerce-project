@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ProductService } from '../../service/product.service';
+import { AccountService } from '../../service/account.service';
 
 @Component({
   selector: 'app-product-list',
@@ -12,11 +14,21 @@ export class ProductListComponent implements OnInit {
   currentProduct = null;
   currentIndex = -1;
   name = '';
+  isAuthenticated = false;
+  private userSub: Subscription;
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private authService: AccountService
+    ) { }
 
   ngOnInit(): void {
     this.readProducts();
+    this.userSub = this.authService.user.subscribe(user => {
+      this.isAuthenticated = !!user;
+      console.log(!user);
+      console.log(!!user);
+    });
   }
 
   readProducts(): void {

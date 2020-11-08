@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../service/product.service';
+import { Subscription } from 'rxjs';
+import { AccountService } from '../../service/account.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -10,9 +12,12 @@ import { ProductService } from '../../service/product.service';
 export class ProductDetailComponent implements OnInit {
   currentProduct = null;
   message = '';
+  isAuthenticated = false;
+  private userSub: Subscription;
 
   constructor(
     private productService: ProductService,
+    private authService: AccountService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -20,6 +25,11 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit(): void {
     this.message = '';
     this.getProduct(this.route.snapshot.paramMap.get('id'));
+    this.userSub = this.authService.user.subscribe(user => {
+      this.isAuthenticated = !!user;
+      console.log(!user);
+      console.log(!!user);
+    });
   }
 
   getProduct(id): void {

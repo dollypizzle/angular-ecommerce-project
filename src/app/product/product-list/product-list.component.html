@@ -19,6 +19,7 @@
         class="btn btn-dark btn-lg"
         [routerLink]="['/products/add-product']"
         role="button"
+        *ngIf="isAuthenticated"
         >Add New Product</a
       >
     </div>
@@ -40,7 +41,7 @@
       </div>
     </div>
     <div class="col-md-9">
-      <div class="w-full">
+      <div>
         <div class="row">
           <div
             class="col-md-3 col-sm-6"
