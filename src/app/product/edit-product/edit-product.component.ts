@@ -25,7 +25,6 @@ export class EditProductComponent implements OnInit {
       .subscribe(
         data => {
           this.currentProduct = data;
-          console.log(data);
         },
         error => {
           console.log(error);
@@ -45,7 +44,6 @@ export class EditProductComponent implements OnInit {
       .subscribe(
         response => {
           this.router.navigate([`/products/${this.currentProduct._id}`]);
-          console.log(response);
         },
         error => {
           console.log(error);

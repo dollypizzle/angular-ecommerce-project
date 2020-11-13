@@ -1,7 +1,7 @@
 <div>
   <div class="card">
     <div class="row" *ngIf="currentProduct">
-      <div class="col-sm-5 border-right">
+      <div class="col-sm-6 col-md-6 border-right">
         <article class="gallery-wrap">
           <div class="img-big-wrap">
             <div>
@@ -13,7 +13,7 @@
 
         </article>
       </div>
-      <div class="col-sm-7">
+      <div class="col-sm-6 col-md-6">
         <article class="p-5 card-body">
           <h3 class="mb-3 title">Name: {{ currentProduct.name }}</h3>
 
@@ -41,13 +41,13 @@
 
           <hr />
           <hr />
-          <a *ngIf="isAuthenticated" routerLink="/products/edit/{{ currentProduct._id }}" class="mx-3 btn btn-lg btn-outline-success text-uppercase">
+          <a *ngIf="isAuthenticated" routerLink="/products/edit/{{ currentProduct._id }}" class="m-2 btn btn-outline-success text-uppercase">
             Edit
           </a>
-          <a *ngIf="isAuthenticated" (click)="deleteProduct()" class="mx-3 btn btn-lg btn-outline-danger text-uppercase text-danger">
+          <a *ngIf="isAuthenticated" (click)="deleteProduct()" class="m-2 btn btn-outline-danger text-uppercase text-danger">
             Delete
           </a>
-          <a class="mx-3 btn btn-lg btn-outline-primary text-uppercase text-primary">
+          <a (click)="addCart()" class="m-2 btn btn-outline-primary text-uppercase text-primary">
             <i class="fa fa-shopping-cart"></i> Add to cart
           </a>
         </article>

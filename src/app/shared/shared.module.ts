@@ -14,6 +14,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { CdkTreeModule } from '@angular/cdk/tree';
     HttpClientModule,
     RouterModule,
     OwlModule,
+    BrowserModule,
     NgxPaginationModule,
     NgxContentLoadingModule,
   ],

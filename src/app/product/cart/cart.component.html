@@ -1,4 +1,7 @@
-<div class="container">
+<div *ngIf="!isLoaded">
+  <h2 class="emptyCart"><strong>Your Cart is Empty, Start Shopping</strong></h2>
+</div>
+<div *ngIf="isLoaded" class="container">
   <section>
     <div class="row">
       <div class="col-lg-8">
@@ -6,12 +9,12 @@
           <div class="pt-4 wish-list">
             <h5 class="mb-4">Shopping Cart</h5>
             <hr class="mb-4" />
-            <div class="row mb-4">
+            <div class="row mb-4" *ngFor="let product of cartProducts | async">
               <div class="col-md-5 col-lg-3 col-xl-3">
-                <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
+                <div class="img-fluid rounded mb-3 mb-md-0">
                   <img
-                    class="img-fluid w-100"
-                    src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13a.jpg"
+                    class="ture w-100"
+                    src="{{ product.image }}"
                     alt="Sample"
                   />
                 </div>
@@ -20,15 +23,9 @@
                 <div>
                   <div class="d-flex justify-content-between">
                     <div>
-                      <h5>Red hoodie</h5>
-                      <p class="mb-3 text-muted text-uppercase small">
-                        Shirt - red
-                      </p>
-                      <p class="mb-2 text-muted text-uppercase small">
-                        Color: red
-                      </p>
-                      <p class="mb-3 text-muted text-uppercase small">
-                        Size: M
+                      <h5>{{ product.name }}</h5>
+                      <p class="mb-8 text-muted text-uppercase small">
+                        {{ product.brand }}
                       </p>
                     </div>
                     <div>
@@ -36,19 +33,19 @@
                         class="def-number-input number-input safari_only mb-0"
                       >
                         <button
-                          onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                           class="fa fa-minus"
+                          (click)="subQuantity(product._id)"
                         ></button>
                         <input
-                          class="quantity w-25 text-center"
+                          class="quantity w-25 text-center border-0"
                           min="0"
                           name="quantity"
-                          value="1"
+                          value="{{ product.quantity }}"
                           type="number"
                         />
                         <button
-                          onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                           class="fa fa-plus"
+                          (click)="addQuantity(product._id)"
                         ></button>
                       </div>
                     </div>
@@ -58,18 +55,19 @@
                   >
                     <div>
                       <a
-                        href="#!"
                         type="button"
+                        (click)="onDelete(product._id)"
                         class="text-danger small text-uppercase mr-3"
                         ><i class="fa fa-trash mr-1"></i> Remove item
                       </a>
                     </div>
                     <p class="mb-0">
-                      <span><strong>$35.99</strong></span>
+                      <span><strong>${{ product.price * product.quantity }}</strong></span>
                     </p>
                   </div>
                 </div>
               </div>
+              <hr class="my-4" />
             </div>
             <p class="text-primary mb-0">
               <i class="fa fa-info-circle mr-1"></i> Do not delay the purchase,
@@ -128,7 +126,7 @@
                 class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"
               >
                 Temporary amount
-                <span>$25.98</span>
+                <span>$ {{ total }}</span>
               </li>
               <li
                 class="list-group-item d-flex justify-content-between align-items-center px-0"
@@ -140,17 +138,20 @@
                 class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3"
               >
                 <div>
-                  <strong>The total amount of</strong>
-                  <strong>
-                    <p class="mb-0">(including VAT)</p>
-                  </strong>
+                  <strong>The total amount</strong>
                 </div>
-                <span><strong>$53.98</strong></span>
+                <span><strong>$ {{ total }}</strong></span>
               </li>
             </ul>
 
-            <button type="button" class="btn btn-primary btn-block">
-              go to checkout
+            <button *ngIf="isAuthenticated" type="button" [routerLink]="['/products/checkout']" class="btn btn-primary btn-block">
+              Go To Checkout
+            </button>
+            <button *ngIf="!isAuthenticated" type="button" [routerLink]="['/login']" class="btn btn-primary btn-block">
+              Go To Checkout
+            </button>
+            <button type="button" [routerLink]="['/products/all-products']" class="btn btn-success btn-block">
+              Continue Shopping
             </button>
           </div>
         </div>

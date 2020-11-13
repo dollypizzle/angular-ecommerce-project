@@ -30,6 +30,7 @@
 }
 .product-grid .pic-2 {
   position: absolute;
+  background-color: #006a7b;
   top: 0;
   left: 0;
   opacity: 0;
@@ -39,7 +40,6 @@
   opacity: 1;
 }
 .product-grid .social {
-  width: 180px;
   padding: 0;
   margin: 0 auto;
   list-style: none;
@@ -169,7 +169,7 @@
   vertical-align: middle;
   display: inline-block;
 }
-.product-grid .add-to-cart {
+.product-grid .p-to-cart {
   border: 1px solid #e5e5e5;
   display: inline-block;
   padding: 10px 20px;

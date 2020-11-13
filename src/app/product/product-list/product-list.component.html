@@ -24,69 +24,45 @@
       >
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-3">
-      <div id="admin-sidebar" class="p-5">
-        <div>
-          <h4 class="mb-3">
-            <strong>Categories</strong>
-          </h4>
-        </div>
-        <ul class="sidenav admin-sidenav list-unstyled">
-          <li><a>Mobile & Accessories</a></li>
-          <li><a>Automobiles & Motorcycles</a></li>
-          <li><a>Computer，Office & Security</a></li>
-          <li><a>Outdoor Fun & Sports</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-md-9">
-      <div>
-        <div class="row">
-          <div
-            class="col-md-3 col-sm-6"
-            *ngFor="let product of products; let i = index"
-            [class.active]="i == currentIndex"
-            (click)="setCurrentProduct(product, i)"
-          >
-            <div class="product-grid">
-              <div class="product-image">
-                <a>
-                  <img
-                    class="pic pic-1"
-                    src="{{ product.image }}"
-                    alt="{{ product.name }}"
-                  />
-                  <img
-                    class="pic pic-2"
-                    src="{{ product.image }}"
-                    alt="{{ product.name }}"
-                  />
-                </a>
-                <ul class="social">
-                  <li>
-                    <a routerLink="/products/{{ product._id }}" data-tip="Quick View"
-                      ><i class="fa fa-eye"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a data-tip="Add to Cart"
-                      ><i class="fa fa-shopping-cart"></i
-                    ></a>
-                  </li>
-                </ul>
-              </div>
-              <div class="product-content">
-                <h3 class="title">
-                  <a>{{ product.name }}</a>
-                </h3>
-                <div class="price">
-                  ${{ product.price }}
-                </div>
-                <a class="add-to-cart">ADD TO CART</a>
-              </div>
+
+  <div class="row w-100">
+    <div
+      class="col-sm-6 col-lg-3"
+      *ngFor="let product of products; let i = index"
+      [class.active]="i == currentIndex"
+      (click)="setCurrentProduct(product, i)"
+    >
+      <div class="product-grid">
+        <div class="product-image">
+          <a>
+            <img
+              class="pic pic-1"
+              src="{{ product.image }}"
+              alt="{{ product.name }}"
+            />
+            <div class="pic pic-2 w-100">
+              <p class=" text-center text-white mt-3">{{ product.description }}</p>
             </div>
-          </div>
+          </a>
+          <ul class="social">
+            <li>
+              <a routerLink="/products/{{ product._id }}" data-tip="Quick View"
+                ><i class="fa fa-eye"></i
+              ></a>
+            </li>
+            <li>
+              <a data-tip="Add to Cart"
+                ><i (click)="addedCart(product)" class="fa fa-shopping-cart"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+        <div class="my-3">
+          <h3 class="title">
+            <a>{{ product.name }}</a>
+          </h3>
+          <div class="price">${{ product.price }}</div>
+          <button (click)="addedCart(product)" class="btn btn-success">ADD TO CART</button>
         </div>
       </div>
     </div>

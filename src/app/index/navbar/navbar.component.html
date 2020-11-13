@@ -1,47 +1,75 @@
-<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark">
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark sticky-top">
   <a class="navbar-brand" [routerLink]="['/']">Dolmart</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ">
-      <li class="nav-item">
-        <a class="nav-link">
-          <i class="fa fa-bell">
-            <span class="badge badge-info">11</span>
-          </i>
-          Messages
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link">
-          <i class="fa fa-globe">
-            <span class="badge badge-success">11</span>
-          </i>
-        Account
-        </a>
-      </li>
-    </ul>
-    <form class="my-2 form-inline my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="my-2 btn btn-outline-success my-sm-0" type="submit">Search</button>
-    </form>
+    <div class="d-none d-lg-flex">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link">
+            <i class="fa fa-bell">
+              <span class="badge badge-info">11</span>
+            </i>
+            Messages
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <i class="fa fa-globe">
+              <span class="badge badge-success">11</span>
+            </i>
+            Account
+          </a>
+        </li>
+      </ul>
+      <form class="my-2 form-inline my-lg-0">
+        <input
+          class="form-control mr-sm-1"
+          type="text"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="my-2 btn btn-outline-success my-sm-0" type="submit">
+          Search
+        </button>
+      </form>
+    </div>
     <ul class="ml-auto navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['products']">
+        <a
+          class="nav-link"
+          [routerLink]="['/']"
+        >
           <i class="fa fa-home"></i>
           Home
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/products/all-products']">
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          [routerLink]="['/products/all-products']"
+        >
           <i class="fa fa-th"></i>
           Product
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/products/cart']" routerLinkActive="active">
+        <a
+          class="nav-link"
+          [routerLink]="['/products/cart']"
+          routerLinkActive="active"
+        >
           <i class="fa fa-shopping-cart"></i>
           Shopping Cart
         </a>
@@ -53,7 +81,11 @@
         </a>
       </li>
       <li class="nav-item" *ngIf="!isAuthenticated">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/register']">
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          [routerLink]="['/register']"
+        >
           <i class="fa fa-user-plus"></i>
           Register
         </a>
