@@ -8,6 +8,4 @@ export interface AppState {
 
 export const appReducer: ActionReducerMap<AppState> = {
   cartList: fromCart.cartReducer,
-  // auth: fromAuth.authReducer,
-  // recipes: fromRecipes.recipeReducer
 };

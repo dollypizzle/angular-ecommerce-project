@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../service/product.service';
 import { Router } from '@angular/router';
+
+import { ProductService } from '../../service/product.service';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css']
+  styleUrls: ['./add-product.component.css'],
 })
 export class AddProductComponent implements OnInit {
-
   product = {
     name: '',
     image: '',
@@ -18,13 +18,9 @@ export class AddProductComponent implements OnInit {
   };
   submitted = false;
 
-  constructor(
-    private productService: ProductService,
-    private router: Router
-  ) { }
+  constructor(private productService: ProductService, private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   createProduct(): void {
     const data = {
@@ -32,30 +28,18 @@ export class AddProductComponent implements OnInit {
       image: this.product.image,
       brand: this.product.brand,
       price: this.product.price,
-      description: this.product.description
+      description: this.product.description,
     };
 
-    this.productService.create(data)
-      .subscribe(
-        response => {
-          this.router.navigate(['/products/all-products']);
-          this.submitted = true;
-        },
-        error => {
-          console.log(error);
-        });
+    this.productService.createProduct(data).subscribe(
+      (response) => {
+        this.router.navigate(['/products/all-products']);
+        this.submitted = true;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
-
-  newProduct(): void {
-    this.submitted = false;
-    this.product = {
-      name: '',
-      image: '',
-      brand: '',
-      price: '',
-      description: '',
-    };
-  }
-
 
 }

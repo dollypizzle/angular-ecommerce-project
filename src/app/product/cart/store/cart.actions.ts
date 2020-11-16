@@ -1,7 +1,5 @@
 import { Action } from '@ngrx/store';
 
-// import { Ingredient } from '../../shared/ingredient.model';
-
 export const ADD_CART = '[Cart] Add Cart';
 export const REMOVE_ITEM = '[Cart] Remove Item';
 export const ADD_QUANTITY = '[Cart] Add Quantity';

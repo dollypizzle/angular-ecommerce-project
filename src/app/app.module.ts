@@ -31,7 +31,6 @@ import { CommonModule } from '@angular/common';
         strictActionTypeUniqueness: false,
       },
     }),
-    // StoreModule.forRoot({ cartList: cartReducer })
   ],
   providers: [],
   bootstrap: [AppComponent],

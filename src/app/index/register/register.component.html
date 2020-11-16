@@ -6,38 +6,38 @@
                 <form id="login-form" [formGroup]="form" (ngSubmit)="onSubmit()">
                   <div class="form-group">
                       <label for="firstname">First Name</label>
-                      <input type="text" formControlName="firstname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" />
-                      <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
-                          <div *ngIf="f.firstname.errors.required">First Name is required</div>
+                      <input type="text" formControlName="firstname" class="form-control" [ngClass]="{ 'is-invalid': submitted && authForm.firstname.errors }" />
+                      <div *ngIf="submitted && authForm.firstname.errors" class="invalid-feedback">
+                          <div *ngIf="authForm.firstname.errors.required">First Name is required</div>
                       </div>
                   </div>
                   <div class="form-group">
                       <label for="lastname">Last Name</label>
-                      <input type="text" formControlName="lastname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" />
-                      <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
-                          <div *ngIf="f.lastname.errors.required">Last Name is required</div>
+                      <input type="text" formControlName="lastname" class="form-control" [ngClass]="{ 'is-invalid': submitted && authForm.lastname.errors }" />
+                      <div *ngIf="submitted && authForm.lastname.errors" class="invalid-feedback">
+                          <div *ngIf="authForm.lastname.errors.required">Last Name is required</div>
                       </div>
                   </div>
                   <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                        <div *ngIf="f.email.errors.required">Enter a Valid Email</div>
+                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && authForm.email.errors }" />
+                    <div *ngIf="submitted && authForm.email.errors" class="invalid-feedback">
+                        <div *ngIf="authForm.email.errors.required">Enter a Valid Email</div>
                     </div>
                 </div>
                   <div class="form-group">
                       <label for="telephone">Telephone</label>
-                      <input type="text" formControlName="telephone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.telephone.errors }" />
-                      <div *ngIf="submitted && f.telephone.errors" class="invalid-feedback">
-                          <div *ngIf="f.telephone.errors.required">telephone is required</div>
+                      <input type="text" formControlName="telephone" class="form-control" [ngClass]="{ 'is-invalid': submitted && authForm.telephone.errors }" />
+                      <div *ngIf="submitted && authForm.telephone.errors" class="invalid-feedback">
+                          <div *ngIf="authForm.telephone.errors.required">telephone is required</div>
                       </div>
                   </div>
                   <div class="form-group">
                       <label for="password">Password</label>
-                      <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                          <div *ngIf="f.password.errors.required">Password is required</div>
-                          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                      <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && authForm.password.errors }" />
+                      <div *ngIf="submitted && authForm.password.errors" class="invalid-feedback">
+                          <div *ngIf="authForm.password.errors.required">Password is required</div>
+                          <div *ngIf="authForm.password.errors.minlength">Password must be at least 6 characters</div>
                       </div>
                   </div>
                   <div class="form-group">
