@@ -45,6 +45,7 @@
                         />
                         <button
                           class="fa fa-plus"
+                          [disabled]="product.quantity < 0"
                           (click)="addQuantity(product._id)"
                         ></button>
                       </div>
