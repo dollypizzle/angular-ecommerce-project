@@ -10,7 +10,7 @@ import { ProductService } from '../service/product.service';
 export class IndexComponent implements OnInit {
   carouselList = [
     {
-      bannerImg: './assets/banner_img/img_1.jpg',
+      bannerImg: './assets/banner_img/img_3.png',
       title: 'Apple iPhone',
       description: 'Explore iPhone, the world\'s most powerful personal device',
     },
@@ -21,7 +21,7 @@ export class IndexComponent implements OnInit {
         ' OnePlus creates beautifully designed products with premium build quality & brings the best technology to users around the world',
     },
     {
-      bannerImg: './assets/banner_img/img_3.png',
+      bannerImg: './assets/banner_img/img_1.jpg',
       title: 'Google Pixel',
       description: 'Discover a better way to capture, store, and see the world',
     },
