@@ -13,16 +13,16 @@ export class NavbarComponent implements OnInit {
   private userSub: Subscription;
 
   constructor(
-    private authService: AccountService
+    private accountService: AccountService
   ) { }
 
   ngOnInit(): void {
-    this.userSub = this.authService.user.subscribe(user => {
+    this.userSub = this.accountService.user.subscribe(user => {
       this.isAuthenticated = !!user;
     });
   }
 
   onLogout() {
-    this.authService.logout();
+    this.accountService.logout();
   }
 }

@@ -9,7 +9,7 @@ import { ProductService } from '../../service/product.service';
   styleUrls: ['./edit-product.component.css'],
 })
 export class EditProductComponent implements OnInit {
-  currentProduct;
+  currentProduct: { name: string; description: string; image: string; brand: string; price: number; _id: string; };
 
   constructor(
     private productService: ProductService,
@@ -21,7 +21,7 @@ export class EditProductComponent implements OnInit {
     this.getProduct(this.route.snapshot.paramMap.get('id'));
   }
 
-  getProduct(id): void {
+  getProduct(id: string): void {
     this.productService.getProduct(id).subscribe(
       (data) => {
         this.currentProduct = data;
