@@ -1,25 +1,34 @@
 <div id="login">
-  <h3 class="text-center text-white pt-5">Login form</h3>
+  <h3 class="text-center text-white pt-5">SignUp form</h3>
   <div class="container">
       <div id="login-row" class="row justify-content-center align-items-center">
           <div id="login-column" class="col-md-6">
               <div class="login-box col-md-12">
                   <form id="login-form" class="form" action="" method="post">
-                      <h3 class="text-center text-dark">Login</h3>
+                      <h3 class="text-center text-dark">SignUp</h3>
                       <div class="form-group">
-                          <label for="username" class="text-dark">Username:</label><br>
-                          <input type="text" name="username" id="username" class="form-control">
+                          <label for="firstname" class="text-dark">First Name:</label><br>
+                          <input type="text" name="firstname" id="firstname" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for="lastname" class="text-dark">Last Name:</label><br>
+                        <input type="text" name="lastname" id="lastname" class="form-control">
                       </div>
                       <div class="form-group">
                           <label for="password" class="text-dark">Password:</label><br>
                           <input type="text" name="password" id="password" class="form-control">
                       </div>
                       <div class="form-group">
+                        <label for="phonenumber" class="text-dark">Phone Number:</label><br>
+                        <input type="text" name="phonenumber" id="phonenumber" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for="email" class="text-dark">Email:</label><br>
+                        <input type="text" name="email" id="email" class="form-control">
+                      </div>
+                      <div class="form-group">
                           <label for="remember-me" class="text-dark"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
                           <input type="submit" name="submit" class="btn btn-dark btn-md" value="submit">
-                      </div>
-                      <div id="register-link" class="text-right">
-                          <a [routerLink]="['/register']" class="text-dark">Register here</a>
                       </div>
                   </form>
               </div>
