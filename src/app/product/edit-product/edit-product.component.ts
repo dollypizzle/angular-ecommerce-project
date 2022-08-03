@@ -3,11 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../service/product.service';
 
 @Component({
-  selector: 'app-product-detail',
-  templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.css']
+  selector: 'app-edit-product',
+  templateUrl: './edit-product.component.html',
+  styleUrls: ['./edit-product.component.css']
 })
-export class ProductDetailComponent implements OnInit {
+export class EditProductComponent implements OnInit {
   currentProduct = null;
   message = '';
 
@@ -34,15 +34,16 @@ export class ProductDetailComponent implements OnInit {
         });
   }
 
-  deleteProduct(): void {
-    this.productService.delete(this.currentProduct._id)
+  updateProduct(): void {
+    this.productService.update(this.currentProduct._id, this.currentProduct)
       .subscribe(
         response => {
           console.log(response);
-          this.router.navigate(['/products']);
+          this.message = 'The product was updated!';
         },
         error => {
           console.log(error);
         });
   }
+
 }

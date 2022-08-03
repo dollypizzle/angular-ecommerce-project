@@ -3,8 +3,8 @@
     <div id="login-row" class="row justify-content-center align-items-center">
       <div id="login-column" class="col-md-6">
         <div class="login-box col-md-12">
-          <form id="login-form" class="form" *ngIf="!submitted">
-            <h3 class="text-center text-dark">Add New Product</h3>
+          <form id="login-form" class="form" *ngIf="currentProduct">
+            <h3 class="text-center text-dark">Edit {{ currentProduct.name}}</h3>
             <div class="form-group">
               <label for="name" class="text-dark">Name:</label><br />
               <input
@@ -13,7 +13,7 @@
                 id="name"
                 class="form-control"
                 required
-                [(ngModel)]="product.name"
+                [(ngModel)]="currentProduct.name"
               />
             </div>
             <div class="form-group">
@@ -24,7 +24,7 @@
                 id="image"
                 class="form-control"
                 required
-                [(ngModel)]="product.image"
+                [(ngModel)]="currentProduct.image"
               />
             </div>
             <div class="form-group">
@@ -35,7 +35,7 @@
                 id="price"
                 class="form-control"
                 required
-                [(ngModel)]="product.price"
+                [(ngModel)]="currentProduct.price"
               />
             </div>
             <div class="form-group">
@@ -46,7 +46,7 @@
                 id="brand"
                 class="form-control"
                 required
-                [(ngModel)]="product.brand"
+                [(ngModel)]="currentProduct.brand"
                 />
             </div>
             <div class="form-group">
@@ -58,11 +58,11 @@
                 id="description"
                 class="form-control"
                 required
-                [(ngModel)]="product.description"
+                [(ngModel)]="currentProduct.description"
                 />
             </div>
             <div class="text-center form-group">
-              <button (click)="createProduct()" class="btn btn-outline-dark btn-lg">Create</button>
+              <button (click)="updateProduct()" class="btn btn-outline-dark btn-lg">Update</button>
             </div>
           </form>
         </div>
