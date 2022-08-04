@@ -8,8 +8,7 @@ import { ProductService } from '../../service/product.service';
   styleUrls: ['./edit-product.component.css']
 })
 export class EditProductComponent implements OnInit {
-  currentProduct = null;
-  message = '';
+  currentProduct;
 
   constructor(
     private productService: ProductService,
@@ -18,7 +17,6 @@ export class EditProductComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.message = '';
     this.getProduct(this.route.snapshot.paramMap.get('id'));
   }
 
@@ -35,11 +33,19 @@ export class EditProductComponent implements OnInit {
   }
 
   updateProduct(): void {
-    this.productService.update(this.currentProduct._id, this.currentProduct)
+    const data = {
+      name: this.currentProduct.name,
+      description: this.currentProduct.description,
+      image: this.currentProduct.image,
+      brand: this.currentProduct.brand,
+      price: this.currentProduct.price,
+
+    };
+    this.productService.update(this.currentProduct._id, data)
       .subscribe(
         response => {
+          this.router.navigate([`/products/${this.currentProduct._id}`]);
           console.log(response);
-          this.message = 'The product was updated!';
         },
         error => {
           console.log(error);

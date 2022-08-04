@@ -41,21 +41,27 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/products/cart']" routerLinkActive="active">
           <i class="fa fa-shopping-cart"></i>
           Shopping Cart
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!isAuthenticated">
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/login']">
           <i class="fa fa-user"></i>
           Login
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!isAuthenticated">
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/register']">
           <i class="fa fa-user-plus"></i>
           Register
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="isAuthenticated">
+        <a class="nav-link" (click)="onLogout()">
+          <i class="fa fa-sign-out"></i>
+          Logout
         </a>
       </li>
     </ul>
