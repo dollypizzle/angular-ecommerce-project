@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../service/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-index',
@@ -24,10 +26,25 @@ export class IndexComponent implements OnInit {
       description: 'Discover a better way to capture, store, and see the world',
     },
   ];
+  products: any;
 
-  constructor() { }
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
+    this.readProducts();
   }
 
+  readProducts(): void {
+    this.productService.getAll()
+      .subscribe(
+        data => {
+          this.products = data.splice(0, 4);
+        },
+        error => {
+          console.log(error);
+        });
+  }
 }

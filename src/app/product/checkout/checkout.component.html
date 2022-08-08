@@ -189,6 +189,9 @@
             <button class="btn btn-primary btn-lg btn-block" (click)="onClear()" data-toggle="modal" data-target="#exampleModal">
               Order Your Product(s)
             </button>
+            <button [routerLink]="['/products/all-products']" class="btn btn-info btn-lg btn-block">
+              Continue Shopping
+            </button>
 
             <div class="modal fade" id="exampleModal" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
