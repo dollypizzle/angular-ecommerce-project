@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const baseUrl = 'https://e-papi-api.herokuapp.com/products';
-console.log(baseUrl);
 @Injectable({
   providedIn: 'root'
 })
@@ -24,7 +23,7 @@ export class ProductService {
     const main = localStorage.getItem('token');
     const Token = main.replace(/['"]+/g, '');
 
-    return this.http.post('https://e-papi-api.herokuapp.com/products', data , {
+    return this.http.post(baseUrl, data , {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${Token}`,
@@ -36,7 +35,7 @@ export class ProductService {
     const main = localStorage.getItem('token');
     const Token = main.replace(/['"]+/g, '');
 
-    return this.http.patch(`https://e-papi-api.herokuapp.com/products/${id}`, data , {
+    return this.http.patch(`${baseUrl}/${id}`, data , {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${Token}`,

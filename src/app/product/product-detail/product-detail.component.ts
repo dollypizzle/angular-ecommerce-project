@@ -1,8 +1,12 @@
+// import { addCart } from './../cart/store/cart.actions';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../service/product.service';
 import { Subscription } from 'rxjs';
 import { AccountService } from '../../service/account.service';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../../store/app.reducer';
+import * as CartActions from '../cart/store/cart.actions';
 
 @Component({
   selector: 'app-product-detail',
@@ -19,7 +23,8 @@ export class ProductDetailComponent implements OnInit {
     private productService: ProductService,
     private authService: AccountService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private store: Store<fromApp.AppState>
   ) { }
 
   ngOnInit(): void {
@@ -27,8 +32,6 @@ export class ProductDetailComponent implements OnInit {
     this.getProduct(this.route.snapshot.paramMap.get('id'));
     this.userSub = this.authService.user.subscribe(user => {
       this.isAuthenticated = !!user;
-      console.log(!user);
-      console.log(!!user);
     });
   }
 
@@ -37,7 +40,6 @@ export class ProductDetailComponent implements OnInit {
       .subscribe(
         data => {
           this.currentProduct = data;
-          console.log(data);
         },
         error => {
           console.log(error);
@@ -48,11 +50,15 @@ export class ProductDetailComponent implements OnInit {
     this.productService.delete(this.currentProduct._id)
       .subscribe(
         response => {
-          console.log(response);
-          this.router.navigate(['/products']);
+          this.router.navigate(['/products/all-products']);
         },
         error => {
           console.log(error);
         });
+  }
+
+  addCart(): void{
+    this.store.dispatch( new CartActions.AddCart(this.currentProduct));
+    alert('Product Added to Cart');
   }
 }

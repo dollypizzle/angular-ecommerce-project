@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../service/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -17,7 +18,10 @@ export class AddProductComponent implements OnInit {
   };
   submitted = false;
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -34,7 +38,7 @@ export class AddProductComponent implements OnInit {
     this.productService.create(data)
       .subscribe(
         response => {
-          console.log(response);
+          this.router.navigate(['/products/all-products']);
           this.submitted = true;
         },
         error => {

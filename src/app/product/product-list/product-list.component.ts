@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ProductService } from '../../service/product.service';
 import { AccountService } from '../../service/account.service';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../../store/app.reducer';
+import * as cartActions from '../cart/store/cart.actions';
 
 @Component({
   selector: 'app-product-list',
@@ -19,15 +22,14 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private authService: AccountService
+    private authService: AccountService,
+    private store: Store<fromApp.AppState>
     ) { }
 
   ngOnInit(): void {
     this.readProducts();
     this.userSub = this.authService.user.subscribe(user => {
       this.isAuthenticated = !!user;
-      console.log(!user);
-      console.log(!!user);
     });
   }
 
@@ -36,7 +38,6 @@ export class ProductListComponent implements OnInit {
       .subscribe(
         data => {
           this.products = data;
-          console.log(data);
         },
         error => {
           console.log(error);
@@ -45,12 +46,17 @@ export class ProductListComponent implements OnInit {
 
   refreshList(): void {
     this.readProducts();
-    this.currentProduct= null;
+    this.currentProduct = null;
     this.currentIndex = -1;
   }
 
-  setCurrentProduct(product, index): void {
+  setCurrentProduct(product: any, index: number): void {
     this.currentProduct = product;
     this.currentIndex = index;
+  }
+
+  addedCart(product): void{
+    this.store.dispatch( new cartActions.AddCart(product));
+    alert('Product Added to Cart');
   }
 }

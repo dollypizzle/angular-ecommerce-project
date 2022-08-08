@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { IndexModule } from './index/index.module';
 import { AppRoutingModule } from './app-routing.module';
 import { ProductModule } from './product/product.module';
+import { StoreModule } from '@ngrx/store';
+import * as fromApp from './store/app.reducer';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -14,9 +17,21 @@ import { ProductModule } from './product/product.module';
   imports: [
     BrowserModule,
     IndexModule,
+    CommonModule,
     ProductModule,
     FormsModule,
     AppRoutingModule,
+    StoreModule.forRoot(fromApp.appReducer,  {
+      runtimeChecks: {
+        strictStateImmutability: false,
+        strictActionImmutability: false,
+        strictStateSerializability: false,
+        strictActionSerializability: false,
+        strictActionWithinNgZone: false,
+        strictActionTypeUniqueness: false,
+      },
+    }),
+    // StoreModule.forRoot({ cartList: cartReducer })
   ],
   providers: [],
   bootstrap: [AppComponent],
