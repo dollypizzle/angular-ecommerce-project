@@ -6,6 +6,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { AddProductComponent } from './add-product/add-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { AuthGuard } from '../shared/auth.guard';
 
 export const ProductRoutes: Routes = [
   {
@@ -22,6 +23,7 @@ export const ProductRoutes: Routes = [
       {
         path: 'add-product',
         component: AddProductComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'cart',
@@ -30,6 +32,7 @@ export const ProductRoutes: Routes = [
       {
         path: 'checkout',
         component: CheckoutComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: ':id',
@@ -38,6 +41,7 @@ export const ProductRoutes: Routes = [
       {
         path: 'edit/:id',
         component: EditProductComponent,
+        canActivate: [AuthGuard]
       }
     ],
   },

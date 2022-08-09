@@ -18,9 +18,9 @@
         *ngFor="let carouselItem of carouselList; let i = index"
         class="carousel-item {{ i === 0 ? 'active' : '' }}"
       >
-        <div class="view">
+        <div class="view hero">
           <img
-            class="d-block w-60 m-auto h-70"
+            class="d-block w-60 m-auto"
             [src]="carouselItem.bannerImg"
             alt="First slide"
           />

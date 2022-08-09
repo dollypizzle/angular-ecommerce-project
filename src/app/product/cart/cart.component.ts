@@ -41,7 +41,7 @@ export class CartComponent implements OnInit {
   }
 
   addQuantity(cartProductId): void {
-    this.store.dispatch(new cartActions.AddQuantity(cartProductId));
+    this.store.dispatch( new cartActions.AddQuantity(cartProductId) );
   }
 
   subQuantity(cartProductId): void {
