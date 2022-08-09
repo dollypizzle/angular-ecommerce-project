@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as fromApp from '../../store/app.reducer';
 import { Observable } from 'rxjs';
+
+import * as fromApp from '../../store/app.reducer';
 import * as cartActions from '../cart/store/cart.actions';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -17,7 +17,6 @@ export class CheckoutComponent implements OnInit {
 
   constructor(
     private store: Store<fromApp.AppState>,
-    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -27,9 +26,8 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-  onClear(): void {
+  onOrder(): void {
     this.store.dispatch( new cartActions.ClearCart() );
-    // this.router.navigate(['/products']);
   }
 
 }

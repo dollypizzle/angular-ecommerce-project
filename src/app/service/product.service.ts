@@ -4,26 +4,24 @@ import { Observable } from 'rxjs';
 
 const baseUrl = 'https://e-papi-api.herokuapp.com/products';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAll(): Observable<any> {
     return this.http.get(baseUrl);
   }
 
-  get(id): Observable<any> {
+  getProduct(id): Observable<any> {
     return this.http.get(`${baseUrl}/${id}`);
   }
 
-  create(data): Observable<any> {
+  createProduct(data): Observable<any> {
+    const userToken = localStorage.getItem('token');
+    const Token = userToken.replace(/['"]+/g, '');
 
-    const main = localStorage.getItem('token');
-    const Token = main.replace(/['"]+/g, '');
-
-    return this.http.post(baseUrl, data , {
+    return this.http.post(baseUrl, data, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${Token}`,
@@ -31,27 +29,27 @@ export class ProductService {
     });
   }
 
-  update(id, data): Observable<any> {
-    const main = localStorage.getItem('token');
-    const Token = main.replace(/['"]+/g, '');
+  updateProduct(id, data): Observable<any> {
+    const userToken = localStorage.getItem('token');
+    const Token = userToken.replace(/['"]+/g, '');
 
-    return this.http.patch(`${baseUrl}/${id}`, data , {
+    return this.http.patch(`${baseUrl}/${id}`, data, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${Token}`,
-      }
+      },
     });
   }
 
-  delete(id): Observable<any> {
-    const main = localStorage.getItem('token');
-    const Token = main.replace(/['"]+/g, '');
+  deleteProduct(id): Observable<any> {
+    const userToken = localStorage.getItem('token');
+    const Token = userToken.replace(/['"]+/g, '');
 
     return this.http.delete(`${baseUrl}/${id}`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${Token}`,
-      }
+      },
     });
   }
 }

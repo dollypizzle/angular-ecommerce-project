@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ProductService } from '../service/product.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-index',
@@ -21,7 +21,7 @@ export class IndexComponent implements OnInit {
         ' OnePlus creates beautifully designed products with premium build quality & brings the best technology to users around the world',
     },
     {
-      bannerImg: './assets/banner_img/img_4.jpg',
+      bannerImg: './assets/banner_img/img_3.png',
       title: 'Google Pixel',
       description: 'Discover a better way to capture, store, and see the world',
     },
@@ -30,7 +30,6 @@ export class IndexComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private router: Router,
   ) { }
 
   ngOnInit(): void {

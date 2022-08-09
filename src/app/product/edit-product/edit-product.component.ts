@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { ProductService } from '../../service/product.service';
 
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
-  styleUrls: ['./edit-product.component.css']
+  styleUrls: ['./edit-product.component.css'],
 })
 export class EditProductComponent implements OnInit {
   currentProduct;
@@ -14,21 +15,21 @@ export class EditProductComponent implements OnInit {
     private productService: ProductService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getProduct(this.route.snapshot.paramMap.get('id'));
   }
 
   getProduct(id): void {
-    this.productService.get(id)
-      .subscribe(
-        data => {
-          this.currentProduct = data;
-        },
-        error => {
-          console.log(error);
-        });
+    this.productService.getProduct(id).subscribe(
+      (data) => {
+        this.currentProduct = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   updateProduct(): void {
@@ -38,16 +39,14 @@ export class EditProductComponent implements OnInit {
       image: this.currentProduct.image,
       brand: this.currentProduct.brand,
       price: this.currentProduct.price,
-
     };
-    this.productService.update(this.currentProduct._id, data)
-      .subscribe(
-        response => {
-          this.router.navigate([`/products/${this.currentProduct._id}`]);
-        },
-        error => {
-          console.log(error);
-        });
+    this.productService.updateProduct(this.currentProduct._id, data).subscribe(
+      (response) => {
+        this.router.navigate([`/products/${this.currentProduct._id}`]);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
-
 }

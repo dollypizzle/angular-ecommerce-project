@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as fromApp from '../../store/app.reducer';
 import { Observable, Subscription } from 'rxjs';
+
+import * as fromApp from '../../store/app.reducer';
 import * as cartActions from './store/cart.actions';
 import { AccountService } from '../../service/account.service';
 

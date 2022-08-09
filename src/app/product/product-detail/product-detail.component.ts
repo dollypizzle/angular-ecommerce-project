@@ -1,10 +1,11 @@
 // import { addCart } from './../cart/store/cart.actions';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from '../../service/product.service';
 import { Subscription } from 'rxjs';
-import { AccountService } from '../../service/account.service';
 import { Store } from '@ngrx/store';
+
+import { ProductService } from '../../service/product.service';
+import { AccountService } from '../../service/account.service';
 import * as fromApp from '../../store/app.reducer';
 import * as CartActions from '../cart/store/cart.actions';
 
@@ -15,7 +16,6 @@ import * as CartActions from '../cart/store/cart.actions';
 })
 export class ProductDetailComponent implements OnInit {
   currentProduct = null;
-  message = '';
   isAuthenticated = false;
   private userSub: Subscription;
 
@@ -28,7 +28,6 @@ export class ProductDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.message = '';
     this.getProduct(this.route.snapshot.paramMap.get('id'));
     this.userSub = this.authService.user.subscribe(user => {
       this.isAuthenticated = !!user;
@@ -36,7 +35,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   getProduct(id): void {
-    this.productService.get(id)
+    this.productService.getProduct(id)
       .subscribe(
         data => {
           this.currentProduct = data;
@@ -47,7 +46,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   deleteProduct(): void {
-    this.productService.delete(this.currentProduct._id)
+    this.productService.deleteProduct(this.currentProduct._id)
       .subscribe(
         response => {
           this.router.navigate(['/products/all-products']);

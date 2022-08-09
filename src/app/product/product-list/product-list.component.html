@@ -29,8 +29,6 @@
     <div
       class="col-sm-6 col-lg-3"
       *ngFor="let product of products; let i = index"
-      [class.active]="i == currentIndex"
-      (click)="setCurrentProduct(product, i)"
     >
       <div class="product-grid">
         <div class="product-image">
