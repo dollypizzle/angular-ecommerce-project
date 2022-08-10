@@ -21,7 +21,7 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkProducts = this.store.select(store => store.cartList.addedItems);
-    this.checkTotal.subscribe( currentTotal => {
+    this.checkTotal.subscribe( (currentTotal: any) => {
       this.total = currentTotal;
     });
   }

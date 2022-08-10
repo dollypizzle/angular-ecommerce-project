@@ -51,14 +51,14 @@ export function cartReducer(
       const itemToRemove = state.addedItems.find(
         (item: { _id: string }) => action.id === item._id
       );
-      const new_items = state.addedItems.filter(
+      const newItems = state.addedItems.filter(
         (item: { _id: string }) => action.id !== item._id
       );
 
       const newTotal = state.total - itemToRemove.price * itemToRemove.quantity;
       return {
         ...state,
-        addedItems: new_items,
+        addedItems: newItems,
         total: newTotal,
       };
     case CartActions.SUB_QUANTITY:
@@ -66,13 +66,13 @@ export function cartReducer(
         (item: { _id: string }) => item._id === action.id
       );
       if (addedProduct.quantity === 1) {
-        let new_items = state.addedItems.filter(
+        let newItems = state.addedItems.filter(
           (item: { id: string }) => item.id !== action.id
         );
         let newTotal = state.total - addedProduct.price;
         return {
           ...state,
-          addedItems: new_items,
+          addedItems: newItems,
           total: newTotal,
         };
       } else {

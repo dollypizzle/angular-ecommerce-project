@@ -15,36 +15,36 @@ import { AccountService } from '../../service/account.service';
 export class CartComponent implements OnInit {
   cartProducts: Observable<Array<any>>;
   cartTotal: any = this.store.select(store => store.cartList.total);
-  total: any;
+  total: number;
   isAuthenticated = false;
   private userSub: Subscription;
   isLoaded = false;
 
   constructor(
     private store: Store<fromApp.AppState>,
-    private authService: AccountService
+    private accountService: AccountService
   ) {}
 
   ngOnInit(): void {
     this.cartProducts = this.store.select(store => store.cartList.addedItems);
-    this.cartTotal.subscribe( currentTotal => {
+    this.cartTotal.subscribe( (currentTotal: any) => {
       this.total = currentTotal;
       this.isLoaded = !!currentTotal;
     });
-    this.userSub = this.authService.user.subscribe(user => {
+    this.userSub = this.accountService.user.subscribe(user => {
       this.isAuthenticated = !!user;
     });
   }
 
-  onDelete(cartProductId): void {
+  onDelete(cartProductId: string): void {
     this.store.dispatch( new cartActions.RemoveItem(cartProductId) );
   }
 
-  addQuantity(cartProductId): void {
+  addQuantity(cartProductId: string): void {
     this.store.dispatch( new cartActions.AddQuantity(cartProductId) );
   }
 
-  subQuantity(cartProductId): void {
+  subQuantity(cartProductId: string): void {
     this.store.dispatch( new cartActions.SubQuantity(cartProductId) );
   }
 

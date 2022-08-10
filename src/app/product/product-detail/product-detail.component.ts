@@ -1,4 +1,3 @@
-// import { addCart } from './../cart/store/cart.actions';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -21,7 +20,7 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private authService: AccountService,
+    private accountService: AccountService,
     private route: ActivatedRoute,
     private router: Router,
     private store: Store<fromApp.AppState>
@@ -29,12 +28,12 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProduct(this.route.snapshot.paramMap.get('id'));
-    this.userSub = this.authService.user.subscribe(user => {
+    this.userSub = this.accountService.user.subscribe(user => {
       this.isAuthenticated = !!user;
     });
   }
 
-  getProduct(id): void {
+  getProduct(id: string): void {
     this.productService.getProduct(id)
       .subscribe(
         data => {

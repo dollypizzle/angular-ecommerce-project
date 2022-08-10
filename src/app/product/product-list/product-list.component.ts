@@ -19,13 +19,13 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private authService: AccountService,
+    private accountService: AccountService,
     private store: Store<fromApp.AppState>
   ) {}
 
   ngOnInit(): void {
     this.readProducts();
-    this.userSub = this.authService.user.subscribe((user) => {
+    this.userSub = this.accountService.user.subscribe((user) => {
       this.isAuthenticated = !!user;
     });
   }
